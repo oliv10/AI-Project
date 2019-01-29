@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class TTTPlayerHuman extends Player {
+
+    private Scanner in = new Scanner(System.in);
 
     public TTTPlayerHuman(String name){
         super(name);
@@ -6,6 +10,7 @@ public class TTTPlayerHuman extends Player {
 
     @Override
     public String getMove(Board board) {
-        return null;
+        System.out.print("Place Piece (1-9): ");
+        return in.next();
     }
 }

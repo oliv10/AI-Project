@@ -6,6 +6,10 @@ public class TTT extends Game {
 
     @Override
     public void run() {
-
+        System.out.println("HI");
+        while (true){
+            System.out.println(board);
+            move();
+        }
     }
 }

@@ -19,9 +19,13 @@ public abstract class Game {
 
     public void move(){
         if (turn == 1){
+            String move = player1.getMove(board);
+            board.placePiece(move, player1.name);
             turn = 2;
         }
         else{
+            String move = player2.getMove(board);
+            board.placePiece(move, player2.name);
             turn = 1;
         }
     }
