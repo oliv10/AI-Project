@@ -10,7 +10,7 @@ public class TTTPlayerHuman extends Player {
 
     @Override
     public String getMove(Board board) {
-        System.out.print("Place Piece (1-9): ");
+        System.out.print(name + " Place Piece (1-9): ");
         return in.next();
     }
 }

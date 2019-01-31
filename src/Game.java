@@ -13,10 +13,6 @@ public abstract class Game {
 
     public abstract void run();
 
-    public int getTurn(){
-        return turn;
-    }
-
     public void move(){
         if (turn == 1){
             String move = player1.getMove(board);
@@ -29,9 +25,4 @@ public abstract class Game {
             turn = 1;
         }
     }
-
-    public void win(Player p){
-        System.out.println(p.name + " Wins!");
-    }
-
 }

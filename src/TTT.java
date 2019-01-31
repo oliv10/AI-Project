@@ -6,16 +6,16 @@ public class TTT extends Game {
 
     @Override
     public void run() {
-        System.out.println("HI");
         while (true){
             if (board.isGameOver()){
                 break;
             }
-            System.out.println(board);
+            System.out.print(board);
             move();
+            System.out.println("\n");
         }
 
-        System.out.println(board);
+        System.out.print(board);
 
         if (board.isWinner("X")){
             System.out.println("Player X Wins");
