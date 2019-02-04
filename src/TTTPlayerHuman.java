@@ -14,3 +14,4 @@ public class TTTPlayerHuman extends Player {
         return in.next();
     }
 }
+// TTTgame = new TTT(new TTTPlayerHuman
