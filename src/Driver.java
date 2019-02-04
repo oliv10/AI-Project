@@ -14,16 +14,18 @@ public class Driver {
                 "Select your game (1-6): ");
         int game = in.nextInt();
 
-        System.out.println("You picked: " + game);
         if(game == 1){
+            System.out.println("You picked: Human vs Human Tic Tac Toe");
             TTT newGame = new TTT(new TTTPlayerHuman("X"), new TTTPlayerHuman("O"), new TTTBoard());
             newGame.run();
         }
         else if(game == 2){
+            System.out.println("You picked: Human vs Easy AI Tic Tac Toe");
             TTT newGame = new TTT(new TTTPlayerHuman("X"), new TTTPlayerEasyAI("O"), new TTTBoard());
             newGame.run();
         }
         else if(game == 3){
+            System.out.println("You picked: Human vs Pro AI Tic Tac Toe");
             TTT newGame = new TTT(new TTTPlayerHuman("X"), new TTTPlayerProAI("O"), new TTTBoard());
             newGame.run();
         }
