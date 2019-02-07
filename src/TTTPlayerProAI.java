@@ -31,7 +31,8 @@ public class TTTPlayerProAI extends Player {
         MoveInfo max = new MoveInfo(moveLoc, -10);
         MoveInfo min = new MoveInfo(moveLoc, 10);
 
-        // . . .
+
+
         return null;
 
     }
