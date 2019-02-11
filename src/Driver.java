@@ -29,5 +29,15 @@ public class Driver {
             TTT newGame = new TTT(new TTTPlayerHuman("X"), new TTTPlayerProAI("O"), new TTTBoard());
             newGame.run();
         }
+        else if(game == 4){
+            System.out.println("You picked: Human vs Human Connect 4");
+            //Board newGame = new ?(new C4PlayerHuman("Y"), new C4PlayerHuman("R"), new C4Board());
+        }
+        else if (game == 5){
+            System.out.println("You picked: Human vs Easy AI Connect 4");
+        }
+        else if (game == 6){
+            System.out.println("You picked: Human vs Hard AI Connect 4");
+        }
     }
 }

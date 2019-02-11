@@ -49,6 +49,24 @@ public class C4Board extends Board {
 
     @Override
     public boolean isWinner(String player) {
+        for(int i=0; i< getRows(); i++){
+          if(streakInRow(i, player, 6) || streakInCol(i,player,7))
+              return true;
+        }
+        for(int colNum = 0; colNum <= 3; colNum++){
+            for(int rowNum = 0; rowNum <= 2; rowNum++){
+                if(streakInNorthEastDiag(rowNum,colNum,player,4)){
+                    return true;
+                }
+            }
+        }
+        for(int colNum = 0; colNum <= 3; colNum++){
+            for(int rowNum = 5; rowNum >= 3; rowNum--){
+                if(streakInSouthEastDiag(6,0,player,4)){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
