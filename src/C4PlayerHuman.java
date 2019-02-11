@@ -10,7 +10,7 @@ public class C4PlayerHuman extends Player {
 
     @Override
     public String getMove(Board board) {
-        System.out.print(name + ", Place your piece");
+        System.out.print(name + ", Place your piece (1-7): ");
         return in.next();
     }
 }

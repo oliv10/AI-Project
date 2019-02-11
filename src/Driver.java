@@ -4,7 +4,6 @@ public class Driver {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-
         System.out.println("1. Tic-Tac-Toe (Human vs Human)\n" +
                 "2. Tic-Tac-Toe (Human vs Beginner AI)\n" +
                 "3. Tic-Tac-Toe (Human vs Pro AI)\n" +
@@ -31,7 +30,8 @@ public class Driver {
         }
         else if(game == 4){
             System.out.println("You picked: Human vs Human Connect 4");
-            //Board newGame = new ?(new C4PlayerHuman("Y"), new C4PlayerHuman("R"), new C4Board());
+            C4 newGame = new C4(new C4PlayerHuman("R"), new C4PlayerHuman("Y"), new C4Board());
+            newGame.run();
         }
         else if (game == 5){
             System.out.println("You picked: Human vs Easy AI Connect 4");
