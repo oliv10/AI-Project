@@ -20,7 +20,7 @@ public class C4 extends Game {
         if (board.isWinner("Y")){
             System.out.println("Player Y Wins");
         }
-        else if (board.isWinner("O")){
+        else if (board.isWinner("R")){
             System.out.println("Player R Wins");
         }
         else{

@@ -50,19 +50,19 @@ public class C4Board extends Board {
     @Override
     public boolean isWinner(String player) {
         for(int i=0; i< getRows(); i++){
-          if(streakInRow(i, player, 6) || streakInCol(i,player,7))
+          if(streakInRow(i, player, 4) || streakInCol(i,player,4))
               return true;
         }
-        for(int colNum = 0; colNum <= 3; colNum++){
-            for(int rowNum = 0; rowNum <= 2; rowNum++){
+        for(int colNum = 0; colNum <=COLS; colNum++){
+            for(int rowNum = 0; rowNum < ROWS; rowNum++){
                 if(streakInNorthEastDiag(rowNum,colNum,player,4)){
                     return true;
                 }
             }
         }
-        for(int colNum = 0; colNum <= 3; colNum++){
-            for(int rowNum = 5; rowNum >= 3; rowNum--){
-                if(streakInSouthEastDiag(6,0,player,4)){
+        for(int colNum = 0; colNum <= COLS; colNum++){
+            for(int rowNum = 6; rowNum >= 0; rowNum--){
+                if(streakInSouthEastDiag(rowNum,colNum,player,4)){
                     return true;
                 }
             }
@@ -72,7 +72,10 @@ public class C4Board extends Board {
 
     @Override
     public boolean isGameOver() {
-        return false;
+        if(isWinner("R") || isWinner("Y") || getEmptyLocs().size() == 0)
+            return true;
+        else
+            return false;
     }
 
     @Override
