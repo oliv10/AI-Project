@@ -1,17 +1,16 @@
 import java.util.Scanner;
 
-public class TTTPlayerHuman extends Player {
+public class C4PlayerHuman extends Player {
 
     private Scanner in = new Scanner(System.in);
 
-    public TTTPlayerHuman(String name){
+    public C4PlayerHuman(String name){
         super(name);
     }
 
     @Override
     public String getMove(Board board) {
-        System.out.print(name + " Place Piece (1-9): ");
+        System.out.print(name + ", Place your piece (1-7): ");
         return in.next();
     }
 }
-// TTTgame = new TTT(new TTTPlayerHuman
