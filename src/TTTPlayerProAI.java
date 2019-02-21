@@ -29,9 +29,21 @@ public class TTTPlayerProAI extends Player {
         MoveInfo max = new MoveInfo(moveLoc, -10);
         MoveInfo min = new MoveInfo(moveLoc, 10);
 
-
-
-        return null;
+        if (playerTurn.equals("X")) {
+            MoveInfo move = recMove(board, "O", moveLoc);
+            if (move.getScore() > max.getScore()) {
+                max = new MoveInfo(moveLoc, move.getScore());
+            }
+        } else {
+            MoveInfo move = recMove(board, "O", moveLoc);
+            if (move.getScore() < min.getScore())
+                min = new MoveInfo(moveLoc, move.getScore());
+        }
+        board.retractPiece(moveLoc);
+        if(playerTurn.equals("X"))
+          return max;
+          else
+              return min;
 
     }
 }
