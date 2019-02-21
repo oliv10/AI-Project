@@ -40,17 +40,16 @@ public class TTTPlayerProAI extends Player {
         if(locs.size() == 0){
             return new MoveInfo(moveLoc, 0);
         }
-        //else if no empty locs exist, return new MoveInfo(moveLoc, 0);
-    //for each moveLoc of possible moves on the board
         ArrayList locs2 = board.getEmptyLocs();
-    for(int i=0; i< locs2.size(); i++) {
-        if (playerTurn.equals("X")) {
-            MoveInfo move = recMove(board, "O", moveLoc);
-            if (move.getScore() > max.getScore()) {
-                max = new MoveInfo(moveLoc, move.getScore());
-            }
-        } else {
-            MoveInfo move = recMove(board, "X", moveLoc);
+        for(int i=0; i< locs2.size(); i++) {
+            if (playerTurn.equals("X")) {
+                MoveInfo move = recMove(board, "O", moveLoc); //Should this be X?
+               if (move.getScore() > max.getScore()) {
+                   max = new MoveInfo(moveLoc, move.getScore());
+              }
+        }
+        else {
+            MoveInfo move = recMove(board, "X", moveLoc); //Should this be O?
             if (move.getScore() < min.getScore())
                 min = new MoveInfo(moveLoc, move.getScore());
         }

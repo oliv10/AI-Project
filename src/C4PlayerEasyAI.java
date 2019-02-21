@@ -16,7 +16,7 @@ public class C4PlayerEasyAI extends Player {
     }
 
     public String getMove(Board board){
-        for (int loc = 1; loc <= 7; loc++){
+        for (int loc = 1; loc < 7; loc++){
             String move = Integer.toString(loc);
             board.placePiece(move, name);
             if (board.isWinner(name)){
@@ -37,7 +37,7 @@ public class C4PlayerEasyAI extends Player {
                 }
             }
         }
-        String move = Integer.toString(r.nextInt(7));
+        String move = Integer.toString(r.nextInt(7)+1);
         System.out.println("AI " + name + " Moved to: " + move);
         return move;
     }
