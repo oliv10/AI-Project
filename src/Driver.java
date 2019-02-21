@@ -35,6 +35,10 @@ public class Driver {
         }
         else if (game == 5){
             System.out.println("You picked: Human vs Easy AI Connect 4");
+            C4 newGame = new C4(new C4PlayerHuman("R"), new C4PlayerEasyAI("Y"), new C4Board());
+            newGame.run();
+            /** todo ai places at 0 broken
+             * **/
         }
         else if (game == 6){
             System.out.println("You picked: Human vs Hard AI Connect 4");
