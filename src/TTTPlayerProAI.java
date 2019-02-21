@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class TTTPlayerProAI extends Player {
 
     /**
@@ -28,22 +30,39 @@ public class TTTPlayerProAI extends Player {
     private MoveInfo recMove(TTTBoard board, String playerTurn, String moveLoc) {
         MoveInfo max = new MoveInfo(moveLoc, -10);
         MoveInfo min = new MoveInfo(moveLoc, 10);
-
+        if(board.isWinner("X")){
+            return new MoveInfo(moveLoc, 10);
+        }
+        else if(board.isWinner("O")){
+            return new MoveInfo(moveLoc, 10);
+        }
+        ArrayList locs = board.getEmptyLocs();
+        if(locs.size() == 0){
+            return new MoveInfo(moveLoc, 0);
+        }
+        //else if no empty locs exist, return new MoveInfo(moveLoc, 0);
+    //for each moveLoc of possible moves on the board
+        ArrayList locs2 = board.getEmptyLocs();
+    for(int i=0; i< locs2.size(); i++) {
         if (playerTurn.equals("X")) {
             MoveInfo move = recMove(board, "O", moveLoc);
             if (move.getScore() > max.getScore()) {
                 max = new MoveInfo(moveLoc, move.getScore());
             }
         } else {
-            MoveInfo move = recMove(board, "O", moveLoc);
+            MoveInfo move = recMove(board, "X", moveLoc);
             if (move.getScore() < min.getScore())
                 min = new MoveInfo(moveLoc, move.getScore());
         }
         board.retractPiece(moveLoc);
-        if(playerTurn.equals("X"))
-          return max;
-          else
-              return min;
+        //ends here
+    }
+        if(playerTurn.equals("X")) {
+            return max;
+        }
+        else {
+            return min;
+        }
 
     }
 }
