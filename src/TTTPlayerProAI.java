@@ -17,6 +17,7 @@ public class TTTPlayerProAI extends Player {
      */
     public String getMove(Board board) {
         MoveInfo mi = recMove( (TTTBoard) board, this.name, "");
+        System.out.println(mi.getLoc());
         return mi.getLoc();
     }
 
@@ -30,30 +31,37 @@ public class TTTPlayerProAI extends Player {
     private MoveInfo recMove(TTTBoard board, String playerTurn, String moveLoc) {
         MoveInfo max = new MoveInfo(moveLoc, -10);
         MoveInfo min = new MoveInfo(moveLoc, 10);
+        ArrayList<String> locs = board.getEmptyLocs();
         if(board.isWinner("X")){
+            System.out.println("x wins");
             return new MoveInfo(moveLoc, 10);
         }
         else if(board.isWinner("O")){
-            return new MoveInfo(moveLoc, 10);
+            System.out.println("o wins");
+            return new MoveInfo(moveLoc, -10);
         }
-        ArrayList locs = board.getEmptyLocs();
         if(locs.size() == 0){
+            System.out.println("cats game");
             return new MoveInfo(moveLoc, 0);
         }
-        ArrayList locs2 = board.getEmptyLocs();
-        for(int i=0; i< locs2.size(); i++) {
-            if (playerTurn.equals("X")) {
-                MoveInfo move = recMove(board, "O", moveLoc); //Should this be X?
+
+        for(int i=0; i< locs.size(); i++) {
+            board.placePiece(locs.get(i),playerTurn);
+            if (playerTurn.equals("O")) { //Is this sufficient to check if this is the right turn?
+                MoveInfo move = recMove(board, "O", locs.get(i)); //Should this be X?
                if (move.getScore() > max.getScore()) {
-                   max = new MoveInfo(moveLoc, move.getScore());
+                   max = new MoveInfo(locs.get(i), move.getScore());
               }
+              playerTurn = "X";
         }
         else {
-            MoveInfo move = recMove(board, "X", moveLoc); //Should this be O?
-            if (move.getScore() < min.getScore())
-                min = new MoveInfo(moveLoc, move.getScore());
+            MoveInfo move = recMove(board, "X", locs.get(i)); //Should this be O?
+            if (move.getScore() < min.getScore()) {
+                min = new MoveInfo(locs.get(i), move.getScore());
+            }
+               playerTurn = "O";
         }
-        board.retractPiece(moveLoc);
+        board.retractPiece(locs.get(i));
         //ends here
     }
         if(playerTurn.equals("X")) {
