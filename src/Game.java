@@ -21,6 +21,7 @@ public abstract class Game {
         }
         else{
             String move = player2.getMove(board);
+            System.out.println("player 2 move---> " + move);
             board.placePiece(move, player2.name);
             turn = 1;
         }
